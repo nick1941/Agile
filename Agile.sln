@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame", "BowlingGame\BowlingGame.csproj", "{1A7DC686-2FD1-4644-A7EC-DD22C9AC7D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame", "Agile\BowlingGame\BowlingGame.csproj", "{1A7DC686-2FD1-4644-A7EC-DD22C9AC7D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameTest", "FrameTest\FrameTest.csproj", "{69A70FB6-6EE2-41A7-BD5C-FCB8ABE361FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrameTest", "Agile\FrameTest\FrameTest.csproj", "{69A70FB6-6EE2-41A7-BD5C-FCB8ABE361FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTest", "Agile\GameTest\GameTest.csproj", "{3D31AC0F-D9EF-434D-8C4B-D7D8581AE194}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{69A70FB6-6EE2-41A7-BD5C-FCB8ABE361FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69A70FB6-6EE2-41A7-BD5C-FCB8ABE361FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69A70FB6-6EE2-41A7-BD5C-FCB8ABE361FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D31AC0F-D9EF-434D-8C4B-D7D8581AE194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D31AC0F-D9EF-434D-8C4B-D7D8581AE194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D31AC0F-D9EF-434D-8C4B-D7D8581AE194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D31AC0F-D9EF-434D-8C4B-D7D8581AE194}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
