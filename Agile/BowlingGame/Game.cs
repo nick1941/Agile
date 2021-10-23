@@ -35,17 +35,22 @@ namespace BowlingGame
         #endregion Properties
 
         #region PrivateMethods
-        private void AdjustCurrentFrame ()
+        private void AdjustCurrentFrame (int pins)
         {
             if (isFirstThrow)
             {
-                isFirstThrow = false;
+                if (pins == 10) // strike
+                    currentFrame++;
+                else
+                    isFirstThrow = false;
             }
             else
             {
                 isFirstThrow = true;
                 currentFrame++;
             }
+            if (currentFrame > 11)
+                currentFrame = 11;
         }
         #endregion PrivateMethods
 
@@ -61,7 +66,7 @@ namespace BowlingGame
             throws [currentThrow++] = pins;
             Score += pins;
 
-            AdjustCurrentFrame ();
+            AdjustCurrentFrame (pins);
         }
 
         /// <summary>
@@ -84,16 +89,24 @@ namespace BowlingGame
                  currentFrame++)
             {
                 int firstThrow  = throws [ball++];
-                int secondThrow = throws [ball++];
-                int frameScore  = firstThrow + secondThrow;
 
-                // spare needs next frame's first throw
-                if (frameScore == 10)
-                    score += frameScore + throws [ball];
+                if (firstThrow == 10) // strike
+                {
+                    score += 10 + throws [ball] + throws [ball + 1];
+                }
                 else
-                    score += frameScore;
+                {
+                    int secondThrow = throws [ball++];
+                    int frameScore = firstThrow + secondThrow;
 
-            }
+                    // spare needs next frame's first throw
+                    if (frameScore == 10)
+                        score += frameScore + throws [ball];
+                    else
+                        score += frameScore;
+                }
+
+            } // method ScoreForFrame
             return score;
         }
         #endregion PublicMethods
