@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1a7dc686-2fd1-4644-a7ec-dd22c9ac7d89": {
+      "ProjectGuid": "1a7dc686-2fd1-4644-a7ec-dd22c9ac7d89",
+      "DisplayName": "BowlingGame",
+      "ColorIndex": 0
+    },
+    "69a70fb6-6ee2-41a7-bd5c-fcb8abe361ff": {
+      "ProjectGuid": "69a70fb6-6ee2-41a7-bd5c-fcb8abe361ff",
+      "DisplayName": "FrameTest",
+      "ColorIndex": 1
+    },
+    "3d31ac0f-d9ef-434d-8c4b-d7d8581ae194": {
+      "ProjectGuid": "3d31ac0f-d9ef-434d-8c4b-d7d8581ae194",
+      "DisplayName": "GameTest",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

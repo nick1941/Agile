@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace BowlingGame
 {
     public class Game
@@ -17,22 +12,20 @@ namespace BowlingGame
         private int    ball;
         private int    currentFrame = 1;
         private int    currentThrow;
-        private int    firstThrow;
-        private int    secondThrow;
         private int [] throws = new int [MAX_THROWS_IN_GAME];
         #endregion Fields
 
         #region Properties
         // Get a count of the next ball thrown
-        private int NextBall
+        private int NextBallForSpare
         {
-            get { return throws [ball]; }
+            get { return throws [ball+2]; }
         }
 
         // Get a count of the next two balls thrown.
-        private int NextTwoBalls
+        private int NextTwoBallsForStrike
         {
-            get { return (throws [ball] + throws [ball + 1]); }
+            get { return (throws [ball+1] + throws [ball + 2]); }
         }
 
         // Get a count from two balls in the frame.
@@ -80,27 +73,6 @@ namespace BowlingGame
             }
             if (currentFrame > 11)
                 currentFrame = 11;
-        }
-
-        // Handle the second throw by adjusting the score.
-        private int HandleSecondThrow ()
-        {
-            int score = 0;
-
-            secondThrow = throws[ball + 1];
-
-            // spare needs next frame's first throw
-            if (Spare ())
-            {
-                ball  += 2;
-                score += 10 + NextBall;
-            }
-            else
-            {
-                score += TwoBallsInFrame;
-                ball  += 2;
-            }
-            return score;
         }
 
         // Is this a spare?
@@ -154,21 +126,24 @@ namespace BowlingGame
                  currentFrame < theFrame;
                  currentFrame++)
             {
-                firstThrow  = throws [ball];
-
                 if (Strike ())
                 {
+                    score += 10 + NextTwoBallsForStrike;
                     ball++;
-                    score += 10 + NextTwoBalls;
+                }
+                else if (Spare ())
+                {
+                    score += 10 + NextBallForSpare;
+                    ball += 2;
                 }
                 else
                 {
-                    score += HandleSecondThrow ();
+                    score += TwoBallsInFrame;
+                    ball  += 2;
                 }
-
-            } // method ScoreForFrame
+            } // for
             return score;
-        }
+        } // method ScoreForFrame
         #endregion PublicMethods
     } // class Game
 } // namespace Bowling Game
