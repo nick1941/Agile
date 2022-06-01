@@ -16,18 +16,11 @@ public class Game
     public int Score 
     { 
         get 
-        { return ScoreForFrame (CurrentFrame - 1);}
+        { return ScoreForFrame (currentFrame);}
         set
         { }
     }
 
-    /// <summary>
-    /// Get the current frame number.
-    /// </summary>
-    public int CurrentFrame
-    {
-        get { return currentFrame; }
-    }
     #endregion Properties
 
     #region PrivateMethods
@@ -38,20 +31,37 @@ public class Game
     {
         if (isFirstThrow)
         {
-            if (pins == 10) // strike
-                currentFrame++;
-            else
+            if (AdjustFrameForStrike (pins) == false)
                 isFirstThrow = false;
         }
         else
         {
             isFirstThrow = true;
-            currentFrame++;
+
+            AdvanceFrame ();
         }
-        if (currentFrame > 11)
-            currentFrame = 11;
+
+    } // method AdjustCurrentFrame
+
+    // Advance to the next frame and test for end of game.
+    private void AdvanceFrame ()
+    {
+        currentFrame++;
+
+        if (currentFrame > 10)
+            currentFrame = 10;
     }
 
+    // Adjust the frame if it's a strike
+    private bool AdjustFrameForStrike (int pins)
+    {
+        if (pins == 10)
+        {
+            AdvanceFrame ();
+            return true;
+        }
+        return false;
+    }
     #endregion PrivateMethods
 
     #region PublicMethods
@@ -64,9 +74,6 @@ public class Game
     public void Add (int pins)
     {
         scorer.AddThrow (pins);
-
-        Score += pins;
-
         AdjustCurrentFrame (pins);
     }
 

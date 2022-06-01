@@ -28,7 +28,6 @@ namespace GameTest
             game.Add (5);
             game.Add (4);
             Assert.AreEqual (9, game.Score);
-            Assert.AreEqual (2, game.CurrentFrame);
         }
 
         [TestMethod]
@@ -41,7 +40,6 @@ namespace GameTest
             Assert.AreEqual (18, game.Score);
             Assert.AreEqual ( 9, game.ScoreForFrame (1));
             Assert.AreEqual (18, game.ScoreForFrame (2));
-            Assert.AreEqual ( 3, game.CurrentFrame);
         }
 
         [TestMethod]
@@ -51,7 +49,6 @@ namespace GameTest
             game.Add (7);
             game.Add (3);
             Assert.AreEqual (13, game.ScoreForFrame (1));
-            Assert.AreEqual ( 2, game.CurrentFrame);
         }
 
         [TestMethod]
@@ -64,7 +61,6 @@ namespace GameTest
             Assert.AreEqual (13, game.ScoreForFrame (1));
             Assert.AreEqual (18, game.ScoreForFrame (2));
             Assert.AreEqual (18, game.Score);
-            Assert.AreEqual ( 3, game.CurrentFrame);
         }
 
         [TestMethod]
@@ -75,7 +71,6 @@ namespace GameTest
             game.Add (6);
             Assert.AreEqual (19, game.ScoreForFrame (1));
             Assert.AreEqual (28, game.Score);
-            Assert.AreEqual (3, game.CurrentFrame);
         }
 
         [TestMethod]
@@ -86,7 +81,6 @@ namespace GameTest
                 game.Add (10);
             }
             Assert.AreEqual (300, game.Score);
-            Assert.AreEqual (11, game.CurrentFrame);
         }
 
         [TestMethod]
