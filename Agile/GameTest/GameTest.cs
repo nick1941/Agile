@@ -3,25 +3,26 @@ using BowlingGame;
 
 namespace GameTest
 {
+    /// <summary>
+    /// A test class to test the Game.
+    /// </summary>
     [TestClass]
     public class GameTest
     {
         private Game game;
 
+        /// <summary>
+        /// Initialize the game test.
+        /// </summary>
         [TestInitialize]
         public void GameTestInitialize ()
         {
             game = new Game ();
         }
 
-        //[TestMethod]
-        //public void TestOneThrow ()
-        //{
-        //    game.Add (5);
-        //    Assert.AreEqual (5, game.Score);
-        //    Assert.AreEqual (1, game.CurrentFrame);
-        //}
-
+        /// <summary>
+        /// Test two throws that don't constitute a strike or spare.
+        /// </summary>
         [TestMethod]
         public void TestTwoThrowsNoMark ()
         {
@@ -30,6 +31,9 @@ namespace GameTest
             Assert.AreEqual (9, game.Score);
         }
 
+        /// <summary>
+        /// Test four throws that don't constitute a strike or spare.
+        /// </summary>
         [TestMethod]
         public void TestFourThrowsNoMark ()
         {
@@ -42,6 +46,9 @@ namespace GameTest
             Assert.AreEqual (18, game.ScoreForFrame (2));
         }
 
+        /// <summary>
+        /// Test three throws that constitute a spare.
+        /// </summary>
         [TestMethod]
         public void TestSimpleSpare ()
         {
@@ -51,6 +58,9 @@ namespace GameTest
             Assert.AreEqual (13, game.ScoreForFrame (1));
         }
 
+        /// <summary>
+        /// Test the frame after a spare.
+        /// </summary>
         [TestMethod]
         public void TestSimpleFrameAfterSpare ()
         {
@@ -63,6 +73,9 @@ namespace GameTest
             Assert.AreEqual (18, game.Score);
         }
 
+        /// <summary>
+        /// Test three throws that constitute a strike.
+        /// </summary>
         [TestMethod]
         public void TestSimpleStrike ()
         {
@@ -73,6 +86,9 @@ namespace GameTest
             Assert.AreEqual (28, game.Score);
         }
 
+        /// <summary>
+        /// Test a perfect game
+        /// </summary>
         [TestMethod]
         public void TestPerfectGame ()
         {
@@ -83,6 +99,10 @@ namespace GameTest
             Assert.AreEqual (300, game.Score);
         }
 
+        /// <summary>
+        /// Test the end of the throws array containing
+        /// a 10th frame spare and a strike in the last position.
+        /// </summary>
         [TestMethod]
         public void TestEndOfArray ()
         {
@@ -97,6 +117,9 @@ namespace GameTest
             Assert.AreEqual (20, game.Score);
         }
 
+        /// <summary>
+        /// Test a sample complete game.
+        /// </summary>
         [TestMethod]
         public void TestSampleGame ()
         {
@@ -122,6 +145,9 @@ namespace GameTest
             Assert.AreEqual (133, game.Score);
         }
 
+        /// <summary>
+        /// Test a heartbreak loss (299 score)
+        /// </summary>
         [TestMethod]
         public void TestHeartBreak ()
         {
@@ -133,6 +159,9 @@ namespace GameTest
             Assert.AreEqual (299, game.Score);
         }
 
+        /// <summary>
+        /// Test a 10th frame spare
+        /// </summary>
         [TestMethod]
         public void TestTenthFrameSpare ()
         {
