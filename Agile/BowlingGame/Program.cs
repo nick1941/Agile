@@ -62,9 +62,7 @@ namespace BowlingGame
         {
             BackgroundColor = ConsoleColor.DarkBlue;
             ForegroundColor = ConsoleColor.White;
-#pragma warning disable CA1416
             WindowHeight = 50;
-#pragma warning restore CA1416
 
             Clear ();
 

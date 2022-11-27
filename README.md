@@ -3,7 +3,7 @@
 Agile is a solution that consists of programming examples and sample code based on the book
 _Agile Principles, Patterns, and Practices in C#_ by Robert C. Martin and Micah Martin.
 
-It currently contains three projects:
+It contains two projects:
 
 *  BowlingGame
 
