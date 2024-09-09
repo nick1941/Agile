@@ -1,33 +1,53 @@
 namespace DrawRectangle;
 
+/// <summary>
+/// A class to draw a rectangle with an embedded image
+/// and perform computation geometry on the rectangle.
+/// </summary>
 public partial class FormDrawRectangle : Form
 {
+    Rectangle srcRect;
+
+    // Creates a new instance of the FormDrawRectangle class.
     public FormDrawRectangle ()
     {
         InitializeComponent ();
     }
 
-    public void DrawImage2FloatRectF (PaintEventArgs e)
+    /// <summary>
+    /// Draws an image in a rectangle.
+    /// </summary>
+    /// <param name="e"></param>
+    public void DrawImageInRectangle (PaintEventArgs e)
     {
 
-        // Create image.
         Image newImage = Image.FromFile (@"..\..\..\Images\Aunt Lee.jpeg");
+        Pen skyBluePen = new (Brushes.SkyBlue);
 
-        // Create coordinates for upper-left corner of image.
-        float x = 100.0F;
-        float y = 100.0F;
+        srcRect          = new (20, 20, 1300, 1600);
+        skyBluePen.Width = 8.0F;
+        DoubleBuffered   = true;
 
-        // Create rectangle for source image.
-        RectangleF srcRect = new RectangleF (50.0F, 50.0F, 450.0F, 450.0F);
-        GraphicsUnit units = GraphicsUnit.Pixel;
-
-        // Draw image to screen.
-        e.Graphics.DrawImage (newImage, x, y, srcRect, units);
+        e.Graphics.DrawRectangle (skyBluePen, srcRect);
+        e.Graphics.DrawImageUnscaledAndClipped (newImage, srcRect);
+        skyBluePen.Dispose ();
+        newImage.Dispose ();
     }
 
+    // Handles the form's Paint event.
     private void OnPaint (object sender, PaintEventArgs e)
     {
-        DrawImage2FloatRectF (e);
+        DrawImageInRectangle (e);
+    }
+
+    // Handles the button's click event.
+    private void OnClickCompute (object sender, EventArgs e)
+    {
+        int area          = srcRect.Width * srcRect.Height;
+        int circumference = 2 * srcRect.Width + 2 * srcRect.Height;
+
+        tbArea.Text          = string.Format ($"{area:N0}");
+        tbCircumference.Text = string.Format ($"{circumference:N0}");
     }
 }
 /* Temporary Area for Test Examples
